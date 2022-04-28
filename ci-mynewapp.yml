@@ -22,11 +22,9 @@ variables:
 
 steps:
 - task: NuGetToolInstaller@1
-
 - task: NuGetCommand@2
   inputs:
     restoreSolution: '$(solution)'
-
 - task: replacetokens@5
   inputs:
     targetFiles: '**/*.cshtml'
@@ -46,7 +44,6 @@ steps:
     msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)" /p:DeployIisAppPath="Default Web Site"'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-
 - task: VSTest@2
   inputs:
     platform: '$(buildPlatform)'
